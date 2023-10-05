@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ffb178;
+            background-size: cover;
+            box-sizing: border-box;
+            overflow: hidden;
+            
+        }
+        table{
+            width: 300px;
+            height: 75px;
+            text-align: center;
+            background-color: #243441;
+            border-radius: 25px;
+            padding: 7px;
+            padding-right: 0px;
+            
+        }
+        input[type="button"],input[type="text"]{
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+            background-color: #263642;
+            border: none;
+            color: #ffffff;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            border-radius: 15px;
+            box-shadow: -1px 3px 20px 1px #2e4252;
+           
+        }
+        input[type="button"]:active{
+             box-shadow: -6px 6px 6px -3px rgba(252, 226, 192, 0.8),6px -6px 6px -3px rgba(255, 255, 255, 0.929);
+        }
+        #equal{
+            color: rgb(255, 255, 255);
+            background-color: rgb(61, 61, 198);
+            border-radius: 5px 15px 25px 5px;
+        }
+        .result{
+            height: 75px;
+            width: 296px;
+            font-size: larger;
+            border-radius:5px 5px 5px 5px ;
+            border :0px;
+        }
+        td{
+          padding: 8px;
+          width: 300px;
+          height: 75px;
+          text-align: center;
+              
+        }
+     
+    </style>
+
+    <script>
+        function calc(value)
+        {
+            var letter = value;
+
+            var i=value.toString().length;
+            console.log("i="+i);
+            console.log("value="+value);
+
+            if(i>=3){
+                document.getElementById("result").value="Input Exceeded...!";
+                alert("Input size must be leass than 10")
+            }
+            else{
+                document.getElementById("result").value+=value;
+            }
+        }
+        function solve()
+        {
+            let x=document.getElementById('result').value;
+            let y= eval(x);
+            var i=y.toString().length;
+            if(i>="10"){
+                document.getElementById("result").value="Overflow";
+                alert("Result size must be leass than 10")
+            }
+            else{
+                document.getElementById("result").value=y;
+            }
+        }
+        function clr()
+        {
+            document.getElementById('result').value=" ";
+        }
+        function back()
+        {
+            var value = document.getElementById("result").value;
+            document.getElementById("result").value = value.substr(0, value.length - 1);
+        }
+    </script>
+</head>
+<body class="body1">
+    <br>
+        <table cellspacing="0px" align="center">
+            <tr>
+                <input disabled style="border: 0px;height:30px;width:30px;">
+                <input disabled style="border: 0px;height:30px;width:30px;float:right">
+                <td colspan="4"><input type="text" maxlength="10" style="width: 292px;" disabled id="result"></td>
+                
+                <!-- <td valign="top"><a href="../index.html"> -->
+                    <!-- <button  id ="back" >X</button></a> -->
+                </td>
+            </tr>
+            <tr >
+                <td><input type="button" value="c" class="color1" onclick="clr()" style="color: rgb(255, 0, 0);"></td>
+                <td><input type="button" value="DEL" class="color" onclick="back()" style="color: rgb(53, 190, 221);font-size:small;"></td>
+                <td><input type="button" value="x" class="color" onclick="calc('*')" style="color: #ffb178"</td>
+                <td><input type="button" value="/" class="color" onclick="calc('/')" style="color: #ffb178"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="calc('7')"></td>
+                <td><input type="button" value="8" onclick="calc('8')"></td>
+                <td><input type="button" value="9" onclick="calc('9')"></td>
+                <td><input type="button" value="-" class="color" onclick="calc('-')" style="color:#ffb178;"></td>
+            </tr>
+            <tr >
+                <td><input type="button" value="4" onclick="calc('4')"></td>
+                <td><input type="button" value="5" onclick="calc('5')"></td>
+                <td><input type="button" value="6" onclick="calc('6')"></td>
+                <td><input type="button" value="+" class="color" onclick="calc('+')" style="color: #ffb178;"></td>
+            </tr>
+            <tr >
+                <td><input type="button" value="1" onclick="calc('1')"></td>
+                <td><input type="button" value="2" onclick="calc('2')"></td>
+                <td><input type="button" value="3" onclick="calc('3')"></td>
+                <td rowspan="2"><input type="button" value="="id="equal" onclick="solve()"></td>
+            </tr>
+            <tr >
+                <td><input type="button" value="00" onclick="calc('00')"></td>
+                <td><input type="button" value="0" onclick="calc('0')"></td>
+                <td><input type="button" value="." onclick="calc('.')"></td>
+            </tr>
+        </table>
+    </div>
+    <!-- <div>
+        <input disabled style="border: 0px;height:30px;width:30px;opacity: .2
+        ;"><input disabled style="border: 0px;height:30px;width:30px;opacity: 0
+        ;"><input disabled style="border: 0px;height:30px;width:30px;opacity: .2
+        ;">
+         <input disabled style="border: 0px;height:30px;width:30px;float:right;opacity: .3;">
+    </div>
+    <input disabled style="border: 0px;height:30px;width:30px;opacity: 0;">
+    <input disabled style="border: 0px;height:30px;width:30px;opacity: .2;">
+    <div style="float: right;color:#ffffff"><span>Designed by</span><br>
+                <span style="padding: 20px;color:rgb(253, 223, 162);font-family:cursive">Mhd Salahu</span></div> -->
+</body>
+</html>
